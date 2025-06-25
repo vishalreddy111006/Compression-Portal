@@ -96,7 +96,7 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-800 to-purple-700 text-white font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-600 to-purple-700 text-white font-sans">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
