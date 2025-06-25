@@ -29,23 +29,23 @@ const FileDownloader = ({
   if (!data) return null;
 
   return (
-    <div className="w-full max-w-2xl mx-auto">
-      <div className="bg-card border rounded-lg p-6">
-        <div className="flex items-center justify-between">
+    <div className="w-full max-w-3xl mx-auto px-4">
+      <div className="bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-700 rounded-2xl shadow-lg p-6 md:p-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <h3 className="text-lg font-semibold mb-1">
+            <h3 className="text-xl font-bold text-zinc-800 dark:text-white mb-1">
               {isCompressed ? 'Compressed' : 'Decompressed'} File Ready
             </h3>
-            <p className="text-muted-foreground">
-              Your file has been {isCompressed ? 'compressed' : 'decompressed'} using {algorithm.toUpperCase()}
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">
+              Your file has been {isCompressed ? 'compressed' : 'decompressed'} using <strong>{algorithm.toUpperCase()}</strong>
             </p>
           </div>
           <button
             onClick={handleDownload}
-            className="bg-primary text-primary-foreground px-6 py-3 rounded-lg hover:bg-primary/90 transition-colors flex items-center space-x-2"
+            className="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-3 rounded-xl flex items-center gap-2 transition-colors shadow"
           >
             <Download className="h-5 w-5" />
-            <span>Download</span>
+            <span className="font-medium">Download</span>
           </button>
         </div>
       </div>
