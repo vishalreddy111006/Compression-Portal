@@ -4,68 +4,69 @@ import { X } from 'lucide-react';
 const algorithmDetails = {
   huffman: {
     title: 'Huffman Coding',
-    overview: 'Huffman coding is a lossless data compression algorithm that uses variable-length prefix codes based on the frequency of characters in the input.',
+    overview:
+      'Huffman uses shorter binary codes for frequent characters to reduce file size.',
     howItWorks: [
-      'Count the frequency of each character in the input',
-      'Build a binary tree with characters as leaves, ordered by frequency',
-      'Assign shorter codes to more frequent characters',
-      'Replace each character with its corresponding code'
+      'Count character frequencies',
+      'Build a binary tree based on frequency',
+      'Assign shorter codes to frequent characters',
+      'Encode using the new codes'
     ],
     advantages: [
-      'Optimal for known character frequencies',
-      'No information loss (lossless)',
-      'Works well with text and structured data'
+      'Great for text compression',
+      'Lossless and efficient',
+      'Smaller output for repetitive data'
     ],
     disadvantages: [
-      'Requires two passes through the data',
-      'Overhead of storing the frequency table',
-      'Not effective for random or already compressed data'
+      'Needs frequency table',
+      'Not good for random data',
+      'Slightly complex to implement'
     ],
-    complexity: 'Time: O(n log n), Space: O(n)'
+    complexity: 'O(n log n) time, O(n) space'
   },
   rle: {
     title: 'Run-Length Encoding (RLE)',
-    overview: 'RLE is a simple form of lossless data compression that replaces sequences of identical characters with a count followed by the character.',
+    overview:
+      'RLE replaces repeated characters with a single value and count.',
     howItWorks: [
-      'Scan the input data sequentially',
-      'Count consecutive identical characters',
-      'Replace runs with count + character pairs',
-      'Single characters are represented as count of 1'
+      'Scan input left to right',
+      'Count repeated characters',
+      'Store count and character',
+      'Repeat until end'
     ],
     advantages: [
-      'Very simple to implement',
-      'Fast compression and decompression',
-      'Excellent for data with many repeated values',
-      'Works well with simple graphics and images'
+      'Very simple and fast',
+      'Best for repeating patterns',
+      'Easy to implement'
     ],
     disadvantages: [
-      'Can increase size if data has few repetitions',
-      'Not suitable for random data',
-      'Limited compression ratio for complex data'
+      'Can grow file size',
+      'Not suitable for complex data',
+      'Works poorly on noisy input'
     ],
-    complexity: 'Time: O(n), Space: O(1)'
+    complexity: 'O(n) time, O(1) space'
   },
   lz77: {
-    title: 'LZ77 (Lempel-Ziv 1977)',
-    overview: 'LZ77 is a dictionary-based compression algorithm that uses a sliding window to find repeated sequences and replace them with references.',
+    title: 'LZ77 Compression',
+    overview:
+      'LZ77 finds repeating patterns and replaces them with references.',
     howItWorks: [
-      'Maintain a sliding window of recent data',
-      'Search for the longest match in the window',
-      'Replace matches with (distance, length, next character) tuples',
-      'Move the window forward and repeat'
+      'Use a sliding window',
+      'Find longest past match',
+      'Replace with (distance, length)',
+      'Slide window and repeat'
     ],
     advantages: [
-      'Good general-purpose compression',
-      'Adapts to data patterns automatically',
-      'Forms basis for many modern algorithms (deflate, gzip)',
-      'Works well with various data types'
+      'Good for general data',
+      'Widely used (gzip, PNG)',
+      'Adapts well to input'
     ],
     disadvantages: [
-      'More complex than simpler algorithms',
-      'Compression ratio depends on window size',
-      'Slower than RLE for simple patterns'
+      'Needs larger memory',
+      'Slower than RLE',
+      'More complex logic'
     ],
-    complexity: 'Time: O(n²) naive, O(n log n) optimized, Space: O(window size)'
+    complexity: 'O(n log n) time, O(window size) space'
   }
 };
 
@@ -75,67 +76,73 @@ const AlgorithmDescription = ({ algorithm, onClose }) => {
   const details = algorithmDetails[algorithm];
 
   return (
-    <div className="fixed inset-0 bg-black/60 bg-opacity-60 flex items-center justify-center p-4 z-50">
-      <div className="bg-white border rounded-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto">
-        <div className="top-0 bg-background border-b p-4 flex items-center justify-between">
-          <h2 className="text-xl font-bold">{details.title}</h2>
+    <div className="fixed inset-0 bg-black/70 flex items-center justify-center p-4 z-50 font-sans">
+      <div className="bg-purple-900 border border-purple-700 rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto text-white shadow-xl">
+        {/* Header */}
+        <div className="border-b border-purple-700 p-4 flex items-center justify-between bg-purple-800/50 rounded-t-2xl">
+          <h2 className="text-xl font-bold tracking-wide">{details.title}</h2>
           <button
             onClick={onClose}
-            className="p-2 hover:bg-muted rounded-lg transition-colors"
+            className="p-2 hover:bg-purple-800 rounded-lg transition-colors text-purple-300 hover:text-red-400"
           >
             <X className="h-5 w-5" />
           </button>
         </div>
 
+        {/* Body */}
         <div className="p-6 space-y-6">
+          {/* Overview */}
           <div>
-            <h3 className="text-lg font-semibold mb-2">Overview</h3>
-            <p className="text-muted-foreground">{details.overview}</p>
+            <h3 className="text-lg font-semibold mb-2 text-purple-200">Overview</h3>
+            <p className="text-purple-300">{details.overview}</p>
           </div>
 
+          {/* How it works */}
           <div>
-            <h3 className="text-lg font-semibold mb-3">How it Works</h3>
+            <h3 className="text-lg font-semibold mb-3 text-purple-200">How it Works</h3>
             <ol className="space-y-2">
               {details.howItWorks.map((step, index) => (
                 <li key={index} className="flex items-start space-x-3">
-                  <span className="bg-primary text-primary-foreground rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0 mt-0.5">
+                  <span className="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-medium flex-shrink-0 mt-0.5">
                     {index + 1}
                   </span>
-                  <span className="text-muted-foreground">{step}</span>
+                  <span className="text-purple-300">{step}</span>
                 </li>
               ))}
             </ol>
           </div>
 
+          {/* Pros and cons */}
           <div className="grid md:grid-cols-2 gap-6">
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-green-600">Advantages</h3>
+              <h3 className="text-lg font-semibold mb-3 text-green-400">Advantages</h3>
               <ul className="space-y-2">
                 {details.advantages.map((advantage, index) => (
                   <li key={index} className="flex items-start space-x-2">
-                    <span className="text-green-600 mt-1">•</span>
-                    <span className="text-muted-foreground">{advantage}</span>
+                    <span className="text-green-400 mt-1">•</span>
+                    <span className="text-purple-200">{advantage}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             <div>
-              <h3 className="text-lg font-semibold mb-3 text-orange-600">Disadvantages</h3>
+              <h3 className="text-lg font-semibold mb-3 text-orange-400">Disadvantages</h3>
               <ul className="space-y-2">
                 {details.disadvantages.map((disadvantage, index) => (
                   <li key={index} className="flex items-start space-x-2">
-                    <span className="text-orange-600 mt-1">•</span>
-                    <span className="text-muted-foreground">{disadvantage}</span>
+                    <span className="text-orange-400 mt-1">•</span>
+                    <span className="text-purple-200">{disadvantage}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
 
-          <div className="bg-muted/50 rounded-lg p-4">
-            <h3 className="text-lg font-semibold mb-2">Complexity</h3>
-            <p className="text-muted-foreground font-mono">{details.complexity}</p>
+          {/* Complexity */}
+          <div className="bg-purple-800/40 rounded-xl p-4 border border-purple-700">
+            <h3 className="text-lg font-semibold mb-2 text-purple-200">Complexity</h3>
+            <p className="text-purple-300 font-mono">{details.complexity}</p>
           </div>
         </div>
       </div>
