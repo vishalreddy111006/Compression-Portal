@@ -51,23 +51,23 @@ const FileUploader = ({ onFileUpload, uploadedFile, onClearFile }) => {
           className={`group border-2 border-dashed rounded-2xl p-8 text-center transition-all duration-300 cursor-pointer
             ${
               isDragOver
-                ? 'border-purple-400 bg-purple-700/30 scale-105'
-                : 'border-purple-600 hover:border-purple-400 hover:bg-purple-700/20'
+                ? 'border-purple-400 bg-purple-700/20 scale-105'
+                : 'border-purple-600 bg-purple-800/30 hover:border-purple-400 hover:bg-purple-700/20'
             }`}
           onDragOver={handleDragOver}
           onDragLeave={handleDragLeave}
           onDrop={handleDrop}
           onClick={() => document.getElementById('file-input')?.click()}
         >
-          <div className="transition-transform duration-300 group-hover:-translate-y-2">
-            <Upload className="mx-auto h-12 w-12 text-purple-200 mb-4" />
-            <h3 className="text-lg font-semibold text-purple-100 mb-2 tracking-wide">
+          <div className="transition-transform duration-300 group-hover:-translate-y-1">
+            <Upload className="mx-auto h-12 w-12 text-purple-300 mb-4" />
+            <h3 className="text-lg font-semibold text-white mb-2 tracking-wide">
               Upload a file to compress
             </h3>
-            <p className="text-sm text-purple-300 mb-4">
+            <p className="text-sm text-purple-200 mb-4">
               Drag and drop your file here, or click to browse
             </p>
-            <p className="text-xs text-purple-400">
+            <p className="text-xs text-purple-300">
               Supports all file types • Max size: 10MB
             </p>
           </div>
@@ -79,20 +79,20 @@ const FileUploader = ({ onFileUpload, uploadedFile, onClearFile }) => {
           />
         </div>
       ) : (
-        <div className="border border-purple-600 bg-purple-700/40 rounded-2xl p-6 shadow-lg">
+        <div className="border border-purple-600 bg-purple-800/40 rounded-2xl p-6 text-white">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <File className="h-8 w-8 text-purple-300" />
               <div>
                 <h3 className="font-semibold text-white">{uploadedFile.name}</h3>
-                <p className="text-sm text-purple-300">
+                <p className="text-sm text-purple-200">
                   {formatFileSize(uploadedFile.size)} • {uploadedFile.type || 'Unknown type'}
                 </p>
               </div>
             </div>
             <button
               onClick={onClearFile}
-              className="p-2 hover:bg-purple-600/30 hover:text-red-400 text-purple-300 rounded-lg transition-colors"
+              className="p-2 hover:bg-purple-700/30 text-purple-300 hover:text-red-400 rounded-lg transition-colors"
             >
               <X className="h-5 w-5" />
             </button>
