@@ -96,14 +96,11 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-600 to-purple-700 text-white font-sans">
+    <div className="min-h-screen bg-gradient-to-b from-purple-900 via-purple-800 to-purple-700 text-white font-sans">
       <div className="container mx-auto px-4 py-12">
         {/* Header */}
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold tracking-tight">ByteSqueeze</h1>
-          <p className="text-base text-purple-200 max-w-xl mx-auto leading-relaxed mt-2">
-            Compress and decompress files using Huffman, RLE, and LZ77. Explore real-time efficiency and performance.
-          </p>
         </div>
 
         <div className="space-y-10">
