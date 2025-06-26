@@ -119,7 +119,7 @@ http://localhost:3000
 
 ## 🎥 Demo Video
 
-▶️ [Watch the walkthrough](#)
+▶️ [Watch the walkthrough](https://drive.google.com/file/d/1wHgvw41Rxm0-YkcPAjIKoTAMHwmPV7La/view?usp=sharing)
 
 ---
 
