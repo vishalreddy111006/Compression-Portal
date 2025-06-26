@@ -62,7 +62,7 @@ const FileUploader = ({ onFileUpload, uploadedFile, onClearFile }) => {
           <div className="transition-transform duration-300 group-hover:-translate-y-1">
             <Upload className="mx-auto h-12 w-12 text-purple-300 mb-4" />
             <h3 className="text-lg font-semibold text-white mb-2 tracking-wide">
-              Upload a file to compress
+              Upload a file to compress or Decompress
             </h3>
             <p className="text-sm text-purple-200 mb-4">
               Drag and drop your file here, or click to browse
